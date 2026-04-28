@@ -1,4 +1,4 @@
-# Learncast — Project Snapshot & Analysis
+# Learncast Project Snapshot & Analysis
 
 ## Project Snapshot
 
