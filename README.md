@@ -4,7 +4,7 @@
 
 Learncast addresses a common learning bottleneck: students miss class, re-reading dense notes is slow and passive, and traditional study formats don't fit modern schedules.
 
-The tool targets anyone who learns on the go — commuters, gym-goers, busy professionals — and benefits auditory learners who retain information better through listening than reading.
+The tool targets anyone who learns on the go: commuters, gym-goers, busy professionals, and benefits auditory learners who retain information better through listening than reading.
 
 Built as an MVP at the Ironhack AI Bootcamp, Learncast takes any PDF, `.txt` file, or pasted transcript and runs it through a three-stage Python pipeline:
 
@@ -12,7 +12,7 @@ Built as an MVP at the Ironhack AI Bootcamp, Learncast takes any PDF, `.txt` fil
 2. **GPT-4o mini summarisation** using the Feynman method and story arc structure
 3. **OpenAI TTS audio generation**
 
-The output is a personalised MP3 podcast recap — selectable voice, adjustable tone — delivered in minutes instead of hours of re-reading.
+The output is a personalised MP3 podcast recap, selectable voice, adjustable tone, delivered in minutes instead of hours of re-reading.
 
 > **Known MVP limitations:** processing time for dense documents (~10 min), voice naturalness degrading at longer lengths, and URL scraping that needs further iteration.
 
@@ -22,13 +22,13 @@ The output is a personalised MP3 podcast recap — selectable voice, adjustable 
 
 | # | Role / Relationship | Need | Risk if Ignored | Influence | Interest |
 |---|---|---|---|---|---|
-| 1 | **End Users / Students & Active Learners** | Accurate, engaging audio recaps that fit into a busy schedule and support retention without dedicated study time | Tool gets built for ideal conditions and never adopted — core value proposition fails because real usage patterns were never considered | Low | High |
-| 2 | **Founding Team** | Viable product-market fit, scalable architecture, and a clear monetisation path | Scope creep, technical debt, or a demo that never becomes production-ready — capital spent with no deployable outcome | High | High |
+| 1 | **End Users / Students & Active Learners** | Accurate, engaging audio recaps that fit into a busy schedule and support retention without dedicated study time | Tool gets built for ideal conditions and never adopted. Core value proposition fails because real usage patterns were never considered | Low | High |
+| 2 | **Founding Team** | Viable product-market fit, scalable architecture, and a clear monetisation path | Scope creep, technical debt, or a demo that never becomes production-ready. Capital spent with no deployable outcome | High | High |
 | 3 | **IT / DevOps** | Stable, documented, deployable app with clear dependency management, no hardcoded secrets, and a reproducible environment | App runs on one developer's laptop and nowhere else | High | Low |
 | 4 | **Legal / Compliance** | Clarity on what data is sent to third-party APIs, how uploads are stored, and whether ToS covers commercial use of generated content | User transcripts containing confidential content sent to external APIs without proper disclosure | High | Low |
-| 5 | **Finance** | Predictable, modelable cost per user interaction to enable viable pricing (subscription, pay-per-use, freemium) | No rate limiting means a single large PDF triggers disproportionate API costs — product loses money on every heavy user | High | Low |
-| 6 | **Customer Support** | Clear error messages, internal documentation, and enough pipeline understanding to diagnose common failures | Users get cryptic errors with no resolution path — churn increases, brand reputation suffers | Low | Medium |
-| 7 | **B2B Customers (L&D Programs)** | Data privacy guarantees, data leak prevention, quality commitment | Enterprise deals fall through at the security review stage — LearnCast locked out of the highest-revenue market segment | High | High |
+| 5 | **Finance** | Predictable, modelable cost per user interaction to enable viable pricing (subscription, pay-per-use, freemium) | No rate limiting means a single large PDF triggers disproportionate API costs, making the product lose money on every heavy user | High | Low |
+| 6 | **Customer Support** | Clear error messages, internal documentation, and enough pipeline understanding to diagnose common failures | Users get cryptic errors with no resolution path. Churn increases and brand reputation suffers | Low | Medium |
+| 7 | **B2B Customers (L&D Programs)** | Data privacy guarantees, data leak prevention, quality commitment | Enterprise deals fall through at the security review stage. LearnCast locked out of the highest-revenue market segment | High | High |
 
 ---
 
@@ -48,7 +48,7 @@ Currently the app has basic Python logging to the terminal and no alerting. If t
 
 ### Security & Secrets Handling
 
-During development, a `.env` file and Hugging Face repository secrets were used — reasonable for a prototype.
+During development, a `.env` file and Hugging Face repository secrets were used, reasonable for a prototype.
 
 **For production:**
 - Secrets manager (AWS Secrets Manager or HashiCorp Vault)
@@ -70,7 +70,7 @@ Learncast currently processes transcript content entirely in memory and passes i
 
 ### Error Handling & Edge Cases
 
-The current pipeline handles the happy path well. Edge cases — scanned PDFs, corrupted files, non-English transcripts, very short inputs — receive basic error messages with no recovery path.
+The current pipeline handles the happy path well. Edge cases such as scanned PDFs, corrupted files, non-English transcripts, and very short inputs receive basic error messages with no recovery path.
 
 **For production:**
 - OCR fallback for scanned documents
@@ -124,7 +124,7 @@ The interface is functional but not optimised for end-user experience and is imp
 
 ### Before
 
-At the start of the project, success meant getting the pipeline to work — upload a transcript, get audio out. There was no formal scope document, no defined user, and no risk assessment. We assumed the happy path: clean PDFs, English content, one user at a time, and an unlimited API budget. If it ran locally and produced a podcast, we considered it done.
+At the start of the project, success meant getting the pipeline to work: upload a transcript, get audio out. There was no formal scope document, no defined user, and no risk assessment. We assumed the happy path: clean PDFs, English content, one user at a time, and an unlimited API budget. If it ran locally and produced a podcast, we considered it done.
 
 ### After
 
@@ -132,8 +132,8 @@ Having thought through stakeholders and production reality, we would reframe suc
 
 Key shifts:
 - **Narrow the MVP** to a specific user (e.g., Ironhack students reviewing bootcamp material in English) rather than building for everyone at once
-- **Expand to instructors** as a second user type — teachers uploading class PDFs is a natural extension with different needs around content control and accuracy
+- **Expand to instructors** as a second user type, since teachers uploading class PDFs is a natural extension with different needs around content control and accuracy
 - **Define non-functional requirements upfront** — the API call vs. wait time tradeoff (up to 10 min for better output) is a decision a real client needs to approve before development starts
 - **Add a security review gate** before any external deployment
 - **Set a cost ceiling** per user session
-- **Redefine done** to include edge case handling and performance benchmarks — not just the happy path
+- **Redefine done** to include edge case handling and performance benchmarks, not just the happy path
